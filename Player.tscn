@@ -52,6 +52,13 @@ collision_mask = 6
 cast_to = Vector2( 80, 30 )
 collision_mask = 6
 
+[node name="Sprite" type="Sprite" parent="Flashlight"]
+visible = false
+texture = ExtResource( 1 )
+offset = Vector2( 5, 1 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 16, 16 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true

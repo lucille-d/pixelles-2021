@@ -5,7 +5,7 @@ onready var flashlight = $Flashlight
 onready var flashlight_collider = $Flashlight/CollisionPolygon2D
 onready var flashlight_light = $Flashlight/Light
 
-const SPEED = 150
+const SPEED = 100
 
 # reference casting points (pointing right)
 const MAX_X = 95
@@ -26,7 +26,7 @@ func _ready():
 	for i in light_casts.size():
 		light_casts[i].cast_to = RC_POINTS[i]
 
-func _process(delta):
+func _process(_delta):
 	# movement
 	move_vector = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
@@ -53,7 +53,6 @@ func _process(delta):
 		is_flashlight_on = !is_flashlight_on
 		toggle_flashlight(is_flashlight_on)
 
-	var polygon_points = null
 	var lc_rotation = null
 	if Input.is_action_just_pressed("shoot_up"):
 		lc_rotation = -90

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/sprites/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Ghost.gd" type="Script" id=2]
@@ -6,16 +6,40 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.70817
 
+[sub_resource type="Animation" id=2]
+resource_name = "bounce"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Ghost/Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 3, 3 ), Vector2( 0, 0 ) ]
+}
+
 [node name="Ghost" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 0
+mode = 1
+gravity_scale = 0.0
 script = ExtResource( 2 )
+direction = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.501961 )
 texture = ExtResource( 1 )
+offset = Vector2( 2.65649, 2.65649 )
 region_enabled = true
 region_rect = Rect2( 0, 32, 16, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bounce"
+anims/bounce = SubResource( 2 )
