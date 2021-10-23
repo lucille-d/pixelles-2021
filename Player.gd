@@ -1,13 +1,19 @@
 extends KinematicBody2D
 
+onready var sprite = $Sprite
 onready var flashlight = $Flashlight
 onready var flashlight_collider = $Flashlight/CollisionPolygon2D
 onready var flashlight_light = $Flashlight/Light
 
-const SPEED = 300
+const SPEED = 150
 
 # reference casting points (pointing right)
-const RC_POINTS = [Vector2(150,-40), Vector2(165,-20), Vector2(170,0), Vector2(165,20), Vector2(150,40)]
+const MAX_X = 95
+const MID_X = 90
+const MIN_X = 80
+const MAX_Y = 30
+const MIN_Y = 15
+const RC_POINTS = [Vector2(MIN_X,-MAX_Y), Vector2(MID_X,-MIN_Y), Vector2(MAX_X,0), Vector2(MID_X,MIN_Y), Vector2(80,MAX_Y)]
 
 var move_vector = Vector2.ZERO
 var is_flashlight_on = false
@@ -24,12 +30,20 @@ func _process(delta):
 	# movement
 	move_vector = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
+		sprite.region_rect.position.x = 16
+		sprite.flip_h = false
 		move_vector += Vector2.UP
 	if Input.is_action_pressed("move_down"):
+		sprite.region_rect.position.x = 0
+		sprite.flip_h = false
 		move_vector += Vector2.DOWN
 	if Input.is_action_pressed("move_left"):
+		sprite.region_rect.position.x = 32
+		sprite.flip_h = true
 		move_vector += Vector2.LEFT
 	if Input.is_action_pressed("move_right"):
+		sprite.region_rect.position.x = 32
+		sprite.flip_h = false
 		move_vector += Vector2.RIGHT
 
 	move_vector = move_vector.normalized()

@@ -1,24 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tombstone.tscn" type="PackedScene" id=3]
 
+[sub_resource type="Environment" id=1]
+glow_enabled = true
+glow_blend_mode = 0
+
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 196.841, 254.455 )
+position = Vector2( 20.604, 56.0019 )
 
 [node name="Ghost" parent="." instance=ExtResource( 1 )]
-position = Vector2( 663.375, 258.166 )
+position = Vector2( 248.231, 108.865 )
 mode = 1
 
 [node name="Tombstone" parent="." instance=ExtResource( 3 )]
-position = Vector2( 889.253, 175.545 )
-rotation = 3.14159
-scale = Vector2( 2.01106, -3.48152 )
+position = Vector2( 299.354, 21.3886 )
 
 [node name="Tombstone2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 368.265, 424.374 )
-rotation = 3.14159
-scale = Vector2( 4.10165, -1.96486 )
+position = Vector2( 84.2906, 157.417 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
