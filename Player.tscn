@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.25, 31.25 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Flashlight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight"]
+build_mode = 1
+polygon = PoolVector2Array( 0, 0, 150, -40, 150, 40 )
+
+[node name="Light" type="Polygon2D" parent="Flashlight"]
+
+[node name="RayCast2D1" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
+cast_to = Vector2( 150, -40 )
+collision_mask = 6
+
+[node name="RayCast2D2" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
+cast_to = Vector2( 165, -20 )
+collision_mask = 6
+
+[node name="RayCast2D3" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
+cast_to = Vector2( 170, 0 )
+collision_mask = 6
+
+[node name="RayCast2D4" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
+cast_to = Vector2( 165, 20 )
+collision_mask = 6
+
+[node name="RayCast2D5" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
+cast_to = Vector2( 150, 40 )
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[connection signal="body_entered" from="Flashlight" to="." method="_on_Flashlight_body_entered"]
