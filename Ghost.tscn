@@ -4,7 +4,7 @@
 [ext_resource path="res://Ghost.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 6.70817
+radius = 2.88668
 
 [sub_resource type="Animation" id=2]
 resource_name = "bounce"
@@ -31,9 +31,7 @@ script = ExtResource( 2 )
 direction = 1
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.501961 )
 texture = ExtResource( 1 )
-offset = Vector2( 2.65649, 2.65649 )
 region_enabled = true
 region_rect = Rect2( 0, 32, 16, 16 )
 
