@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/sprites/spritesheet.png" type="Texture" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://scenes/nodes/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 2 )
@@ -15,40 +15,29 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flashlight"]
-build_mode = 1
 polygon = PoolVector2Array( 0, 0, 100, -30, 100, 30 )
 
 [node name="Light" type="Polygon2D" parent="Flashlight"]
 modulate = Color( 1, 1, 1, 0.501961 )
 polygon = PoolVector2Array( 0, 0, 100, -30, 100, 30 )
 
-[node name="RayCast2D1" type="RayCast2D" parent="Flashlight" groups=[
-"light",
-]]
+[node name="RayCast2D1" type="RayCast2D" parent="Flashlight" groups=["light"]]
 cast_to = Vector2( 80, -30 )
 collision_mask = 4
 
-[node name="RayCast2D2" type="RayCast2D" parent="Flashlight" groups=[
-"light",
-]]
+[node name="RayCast2D2" type="RayCast2D" parent="Flashlight" groups=["light"]]
 cast_to = Vector2( 90, -15 )
 collision_mask = 4
 
-[node name="RayCast2D3" type="RayCast2D" parent="Flashlight" groups=[
-"light",
-]]
+[node name="RayCast2D3" type="RayCast2D" parent="Flashlight" groups=["light"]]
 cast_to = Vector2( 95, 0 )
 collision_mask = 4
 
-[node name="RayCast2D4" type="RayCast2D" parent="Flashlight" groups=[
-"light",
-]]
+[node name="RayCast2D4" type="RayCast2D" parent="Flashlight" groups=["light"]]
 cast_to = Vector2( 90, 15 )
 collision_mask = 4
 
-[node name="RayCast2D5" type="RayCast2D" parent="Flashlight" groups=[
-"light",
-]]
+[node name="RayCast2D5" type="RayCast2D" parent="Flashlight" groups=["light"]]
 cast_to = Vector2( 80, 30 )
 collision_mask = 4
 

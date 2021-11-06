@@ -1,13 +1,17 @@
 extends RigidBody2D
 
 onready var sprite = $Sprite
+onready var anim_player = $AnimationPlayer
 
 const SPEED = 50
 export(int, "Vertical", "Horizontal") var direction
 
 var facing = 1
+var dying = false
 
 func _process(delta):
+	if dying: return
+
 	if direction == 1:
 		sprite.region_rect.position.x = 32
 		position.x = position.x + SPEED * delta * facing
@@ -26,3 +30,7 @@ func _process(delta):
 		if position.y < 20:
 			sprite.region_rect.position.x = 0
 			facing = 1
+
+func hit_by_light():
+	dying = true
+	anim_player.play("die")

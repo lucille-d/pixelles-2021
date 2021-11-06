@@ -5,7 +5,7 @@ onready var flashlight = $Flashlight
 onready var flashlight_collider = $Flashlight/CollisionPolygon2D
 onready var flashlight_light = $Flashlight/Light
 
-const SPEED = 100
+const SPEED = 7000
 
 # reference casting points (pointing right)
 const MAX_X = 95
@@ -68,7 +68,7 @@ func _process(_delta):
 			light_casts[i].cast_to = RC_POINTS[i].rotated(deg2rad(lc_rotation))
 
 func _physics_process(delta):
-	move_and_collide(move_vector * SPEED * delta)
+	move_and_slide(move_vector * SPEED * delta)
 
 	if is_flashlight_on:
 		update_light_casts()
@@ -91,4 +91,5 @@ func update_light_casts():
 
 func _on_Flashlight_body_entered(body):
 	if "Ghost" in body.name:
-		body.queue_free()
+		body.hit_by_light()
+#		body.queue_free()

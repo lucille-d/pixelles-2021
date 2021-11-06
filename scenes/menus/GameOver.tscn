@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/menus/GameOver.gd" type="Script" id=1]
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 59.0
+margin_right = 240.0
+margin_bottom = 73.0
+text = "game over"
+align = 1
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+margin_top = 77.0
+margin_right = 240.0
+margin_bottom = 97.0
+text = "RESTART"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
+margin_top = 101.0
+margin_right = 240.0
+margin_bottom = 121.0
+text = "MENU"
+
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
