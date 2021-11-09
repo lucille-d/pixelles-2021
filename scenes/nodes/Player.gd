@@ -19,6 +19,8 @@ var move_vector = Vector2.ZERO
 var is_flashlight_on = false
 var light_casts : Array = []
 
+var nearby_goo = null
+
 func _ready():
 	toggle_flashlight(is_flashlight_on)
 	light_casts = get_tree().get_nodes_in_group('light')
@@ -52,6 +54,11 @@ func _process(_delta):
 	if Input.is_action_just_pressed("activate_light"):
 		is_flashlight_on = !is_flashlight_on
 		toggle_flashlight(is_flashlight_on)
+
+	# cleaning
+	if Input.is_action_just_pressed("clean") and nearby_goo:
+		nearby_goo.on_clean()
+		nearby_goo = null
 
 	var lc_rotation = null
 	if Input.is_action_just_pressed("shoot_up"):

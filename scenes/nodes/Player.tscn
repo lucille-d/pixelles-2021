@@ -21,23 +21,33 @@ polygon = PoolVector2Array( 0, 0, 100, -30, 100, 30 )
 modulate = Color( 1, 1, 1, 0.501961 )
 polygon = PoolVector2Array( 0, 0, 100, -30, 100, 30 )
 
-[node name="RayCast2D1" type="RayCast2D" parent="Flashlight" groups=["light"]]
+[node name="RayCast2D1" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
 cast_to = Vector2( 80, -30 )
 collision_mask = 4
 
-[node name="RayCast2D2" type="RayCast2D" parent="Flashlight" groups=["light"]]
+[node name="RayCast2D2" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
 cast_to = Vector2( 90, -15 )
 collision_mask = 4
 
-[node name="RayCast2D3" type="RayCast2D" parent="Flashlight" groups=["light"]]
+[node name="RayCast2D3" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
 cast_to = Vector2( 95, 0 )
 collision_mask = 4
 
-[node name="RayCast2D4" type="RayCast2D" parent="Flashlight" groups=["light"]]
+[node name="RayCast2D4" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
 cast_to = Vector2( 90, 15 )
 collision_mask = 4
 
-[node name="RayCast2D5" type="RayCast2D" parent="Flashlight" groups=["light"]]
+[node name="RayCast2D5" type="RayCast2D" parent="Flashlight" groups=[
+"light",
+]]
 cast_to = Vector2( 80, 30 )
 collision_mask = 4
 

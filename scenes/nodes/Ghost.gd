@@ -1,15 +1,24 @@
 extends RigidBody2D
 
+onready var Goo = preload("Goo.tscn")
+
 onready var sprite = $Sprite
 onready var anim_player = $AnimationPlayer
+onready var goo_container = get_parent().find_node("GooContainer")
 
 const SPEED = 50
 export(int, "Vertical", "Horizontal") var direction
 
 var facing = 1
 var dying = false
+var goo_timer = randi() % 4 + 2
 
 func _process(delta):
+	goo_timer -= delta
+	if goo_timer <= 0:
+		spawn_goo()
+		goo_timer = randi() % 4 + 2
+
 	if dying: return
 
 	if direction == 1:
@@ -34,3 +43,8 @@ func _process(delta):
 func hit_by_light():
 	dying = true
 	anim_player.play("die")
+
+func spawn_goo():
+	var g = Goo.instance()
+	g.position = position
+	goo_container.add_child(g)
