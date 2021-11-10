@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/nodes/Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/nodes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/resources/element_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://assets/resources/env_tileset.tres" type="TileSet" id=4]
@@ -46,10 +45,3 @@ collision_mask = 12
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-
-[node name="Ghost" parent="." instance=ExtResource( 1 )]
-position = Vector2( 175.923, 88.2059 )
-
-[node name="Ghost2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 65.9758, 134.876 )
-direction = 1

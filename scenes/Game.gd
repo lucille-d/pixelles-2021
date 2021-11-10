@@ -1,9 +1,11 @@
 extends Node2D
 
-onready var Goo = preload("nodes/Goo.tscn")
+onready var Ghost = preload("nodes/Ghost.tscn")
 onready var ui_timebar = $GUI/TimeBar
 onready var ui_chaosbar = $GUI/ChaosBar
 onready var goo_container = $GooContainer
+
+var ghost_spawn_timer = 0
 
 const LEVEL_TIME = 60 # seconds
 var current_time = 0
@@ -18,6 +20,11 @@ func _process(delta):
 	if current_time >= LEVEL_TIME:
 		Global.end_game(true)
 
+	ghost_spawn_timer -= delta
+	if ghost_spawn_timer <= 0:
+		spawn_ghost()
+		ghost_spawn_timer = randi() % 4 + 2
+
 func update_chaos(value):
 	current_chaos = max(0, current_chaos + value)
 
@@ -25,3 +32,11 @@ func update_chaos(value):
 
 	if current_chaos > MAX_CHAOS:
 		Global.end_game(false)
+
+func spawn_ghost():
+	var g = Ghost.instance()
+	g.position.x = randi() % 350
+	g.position.y = randi() % 250
+	if randf() > .5:
+		g.direction = 1
+	add_child(g)
