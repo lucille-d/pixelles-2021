@@ -1,23 +1,26 @@
 extends KinematicBody2D
 
+onready var anim_player = $AnimationPlayer
 onready var sprite = $Sprite
 onready var flashlight = $Flashlight
 onready var flashlight_collider = $Flashlight/CollisionPolygon2D
 onready var flashlight_light = $Flashlight/Light
+onready var cleaning_bar = $CleaningBar
 
 const SPEED = 7000
 
 # reference casting points (pointing right)
-const MAX_X = 95
-const MID_X = 90
-const MIN_X = 80
-const MAX_Y = 30
-const MIN_Y = 15
-const RC_POINTS = [Vector2(MIN_X,-MAX_Y), Vector2(MID_X,-MIN_Y), Vector2(MAX_X,0), Vector2(MID_X,MIN_Y), Vector2(80,MAX_Y)]
+const MAX_X = 83
+const MID_X = 80
+const MIN_X = 70
+const MAX_Y = 20
+const MIN_Y = 13
+const RC_POINTS = [Vector2(MIN_X,-MAX_Y), Vector2(MID_X,-MIN_Y), Vector2(MAX_X,0), Vector2(MID_X,MIN_Y), Vector2(MIN_X,MAX_Y)]
 
 var move_vector = Vector2.ZERO
 var is_flashlight_on = false
 var light_casts : Array = []
+var is_cleaning = false
 
 var nearby_goo = null
 
@@ -51,14 +54,18 @@ func _process(_delta):
 	move_vector = move_vector.normalized()
 
 	# flashlight
-	if Input.is_action_just_pressed("activate_light"):
+	if Input.is_action_just_pressed("activate_light") and !is_cleaning:
 		is_flashlight_on = !is_flashlight_on
 		toggle_flashlight(is_flashlight_on)
 
 	# cleaning
 	if Input.is_action_just_pressed("clean") and nearby_goo:
+		is_cleaning = true
+		is_flashlight_on = false
+		toggle_flashlight(false)
 		nearby_goo.on_clean()
-		nearby_goo = null
+		anim_player.play("cleaning_bar")
+		# not ideal, this animation has to be the same duration as goo.disappear
 
 	var lc_rotation = null
 	if Input.is_action_just_pressed("shoot_up"):
@@ -73,6 +80,11 @@ func _process(_delta):
 	if lc_rotation != null:
 		for i in light_casts.size():
 			light_casts[i].cast_to = RC_POINTS[i].rotated(deg2rad(lc_rotation))
+
+func on_done_cleaning():
+	cleaning_bar.hide()
+	nearby_goo = null
+	is_cleaning = false
 
 func _physics_process(delta):
 	move_and_slide(move_vector * SPEED * delta)

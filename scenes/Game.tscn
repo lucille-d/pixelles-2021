@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/nodes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/resources/element_tileset.tres" type="TileSet" id=3]
@@ -6,8 +6,22 @@
 [ext_resource path="res://scenes/nodes/ui/UIBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Game.gd" type="Script" id=6]
 
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/3 = false
+glow_levels/5 = false
+glow_intensity = 0.1
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -37,11 +51,11 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 131092, 2, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 2, 0, 196628, 1, 0, 262164, 1, 0, 327682, 0, 0, 327694, 1, 0, 327695, 1, 0, 327696, 1, 0, 327697, 2, 0, 327700, 1, 0, 393236, 1, 0, 458754, 0, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 2, 0, 458772, 1, 0, 524308, 1, 0, 589826, 0, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 2, 0, 589844, 1, 0, 655366, 1, 0, 655380, 1, 0, 720898, 0, 0, 720902, 1, 0, 720916, 1, 0, 786438, 1, 0, 786452, 1, 0, 851974, 1, 0, 851988, 2, 0 )
 
-[node name="GooContainer" type="Node2D" parent="."]
-
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 52.4837, 52.0382 )
 collision_mask = 12
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+
+[node name="GooContainer" type="Node2D" parent="."]

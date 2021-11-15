@@ -23,14 +23,14 @@ func _process(_delta):
 
 func start_game():
 	get_tree().change_scene_to(GameScene)
-	
+
 func end_game(win):
 	has_won = win
 	get_tree().change_scene_to(GameOverScene)
 
 func to_menu():
 	get_tree().change_scene_to(MenuScene)
-	
+
 func to_settings():
 	get_tree().change_scene_to(SettingsScene)
 

@@ -13,8 +13,9 @@ func _ready():
 func on_clean():
 	animation_player.play("disappear")
 
-func lower_chaos():
+func on_cleaned():
 	game.update_chaos(-chaos_value)
+	queue_free()
 
 func modulate_color():
 	sprite.modulate = Global.accent_color
