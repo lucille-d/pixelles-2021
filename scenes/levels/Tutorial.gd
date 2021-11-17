@@ -31,7 +31,8 @@ func process_step_1():
 
 	if Input.is_action_just_pressed("ui_accept") or movement_pressed.size() >= 4:
 		g = Ghost.instance()
-		g.position = Vector2(175,75)
+		g.position = Vector2(60,100)
+		g.direction = 1
 		g.goo_timer = INF
 		g.is_killable = false
 		add_child(g)
@@ -55,13 +56,11 @@ func process_step_3():
 		current_step = null
 
 func clean_slime_done():
-	s.disconnect("tree_exited", self, "next_step")
 	g.connect("tree_exited", self, "kill_ghost_done")
 	label.text = "You can also get rid of ghosts with your flashlight [F + Arrow keys]."
 	g.is_killable = true
 
 func kill_ghost_done():
-	g.disconnect("tree_exited", self, "kill_ghost_done")
 	ui_slime_bar.show()
 	label.text = "If the slime counter fills up, you lose..."
 	enter_label.show()

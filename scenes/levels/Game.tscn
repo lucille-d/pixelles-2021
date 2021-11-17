@@ -72,6 +72,7 @@ self_modulate = Color( 0, 0, 0, 1 )
 material = SubResource( 4 )
 margin_right = 73.0
 margin_bottom = 24.0
+theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -86,6 +87,9 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "[F] Flashlight
 [E] Clean"
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BackgroundMap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
@@ -107,7 +111,6 @@ tile_data = PoolIntArray( 131092, 2, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 52.4837, 52.0382 )
-collision_mask = 12
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true

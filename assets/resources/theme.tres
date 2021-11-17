@@ -1,6 +1,17 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=7 format=2]
 
 [ext_resource path="res://assets/regular.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.74902, 0.74902, 0.74902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.74902, 0.74902, 0.74902, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -8,3 +19,10 @@ font_data = ExtResource( 1 )
 
 [resource]
 default_font = SubResource( 2 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/styles/focus = SubResource( 6 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 7 )
