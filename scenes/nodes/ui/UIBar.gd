@@ -12,7 +12,7 @@ var value = 0
 
 func _ready():
 	sprite.region_rect.position.x = sprite_rect_x
-	
+
 	if colored:
 		sprite.modulate = Global.accent_color
 		bar_fill.modulate = Global.accent_color

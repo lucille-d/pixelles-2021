@@ -1,9 +1,10 @@
 extends Node2D
 
-onready var Ghost = preload("nodes/Ghost.tscn")
+onready var Ghost = preload("../nodes/Ghost.tscn")
 onready var ui_timebar = $GUI/TimeBar
 onready var ui_chaosbar = $GUI/ChaosBar
 onready var goo_container = $GooContainer
+onready var pause_overlay = $GUI/PauseOverlay
 
 var ghost_spawn_timer = 0
 
@@ -12,6 +13,9 @@ var current_time = 0
 
 const MAX_CHAOS = 100
 var current_chaos = 0
+
+func _ready():
+	Global.connect("pause", self, "on_pause")
 
 func _process(delta):
 	current_time += delta
@@ -40,3 +44,9 @@ func spawn_ghost():
 	if randf() > .5:
 		g.direction = 1
 	add_child(g)
+
+func on_pause(is_paused):
+	if is_paused:
+		pause_overlay.show()
+	else:
+		pause_overlay.hide()

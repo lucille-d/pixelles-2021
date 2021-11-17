@@ -9,6 +9,7 @@ onready var goo_container = get_parent().find_node("GooContainer")
 const SPEED = 50
 export(int, "Vertical", "Horizontal") var direction
 
+var is_killable = true
 var facing = 1
 var dying = false
 var goo_timer = randi() % 4 + 2
@@ -41,6 +42,7 @@ func _process(delta):
 			facing = 1
 
 func hit_by_light():
+	if not is_killable: return # used for tutorial
 	dying = true
 	anim_player.play("die")
 
@@ -48,3 +50,4 @@ func spawn_goo():
 	var g = Goo.instance()
 	g.position = position
 	goo_container.add_child(g)
+	return g

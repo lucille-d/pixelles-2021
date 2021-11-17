@@ -81,6 +81,7 @@ func _process(_delta):
 		for i in light_casts.size():
 			light_casts[i].cast_to = RC_POINTS[i].rotated(deg2rad(lc_rotation))
 
+
 func on_done_cleaning():
 	cleaning_bar.hide()
 	nearby_goo = null

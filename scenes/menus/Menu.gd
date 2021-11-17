@@ -6,3 +6,7 @@ func _on_StartButton_pressed():
 
 func _on_SettingsButton_pressed():
 	Global.to_settings()
+
+
+func _on_TutorialButton_pressed():
+	Global.to_tutorial()
