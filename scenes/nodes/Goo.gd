@@ -1,6 +1,7 @@
 extends Area2D
 
 onready var sprite = $Sprite
+onready var outline = $Outline
 onready var animation_player = $AnimationPlayer
 onready var game = get_parent().get_parent()
 
@@ -25,10 +26,13 @@ func modulate_color():
 	sprite.modulate = Global.accent_color
 
 func _on_Goo_body_entered(body):
-	animation_player.play("blink")
-	body.nearby_goo = self
+#	animation_player.play("blink")
+	outline.show()
+	body.add_nearby_goo(self)
 
 func _on_Goo_body_exited(body):
-	body.on_done_cleaning() # cancel cleaning
+	outline.hide()
+	body.remove_nearby_goo(self)
+	body.on_done_cleaning(true) # cancel cleaning
 	animation_player.stop()
 	sprite.self_modulate.a = 1

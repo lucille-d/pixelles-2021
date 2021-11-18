@@ -22,28 +22,28 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 55.0
+margin_top = 64.0
 margin_right = 240.0
-margin_bottom = 65.0
+margin_bottom = 74.0
 text = "Hello"
 align = 1
 
 [node name="TutorialButton" type="Button" parent="VBoxContainer"]
-margin_top = 69.0
+margin_top = 78.0
 margin_right = 240.0
-margin_bottom = 85.0
+margin_bottom = 88.0
 text = "Tutorial"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
-margin_top = 89.0
+margin_top = 92.0
 margin_right = 240.0
-margin_bottom = 105.0
+margin_bottom = 102.0
 text = "Start"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
-margin_top = 109.0
+margin_top = 106.0
 margin_right = 240.0
-margin_bottom = 125.0
+margin_bottom = 116.0
 text = "Settings"
 
 [connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_TutorialButton_pressed"]

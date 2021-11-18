@@ -22,7 +22,7 @@ var is_flashlight_on = false
 var light_casts : Array = []
 var is_cleaning = false
 
-var nearby_goo = null
+var nearby_goo = []
 
 func _ready():
 	toggle_flashlight(is_flashlight_on)
@@ -59,11 +59,11 @@ func _process(_delta):
 		toggle_flashlight(is_flashlight_on)
 
 	# cleaning
-	if Input.is_action_just_pressed("clean") and nearby_goo:
+	if Input.is_action_just_pressed("clean") and nearby_goo.size() > 0:
 		is_cleaning = true
 		is_flashlight_on = false
 		toggle_flashlight(false)
-		nearby_goo.on_clean()
+		nearby_goo[0].on_clean()
 		anim_player.play("cleaning_bar")
 		# not ideal, this animation has to be the same duration as goo.disappear
 
@@ -82,16 +82,25 @@ func _process(_delta):
 			light_casts[i].cast_to = RC_POINTS[i].rotated(deg2rad(lc_rotation))
 
 
-func on_done_cleaning():
-	cleaning_bar.hide()
-	nearby_goo = null
-	is_cleaning = false
-
 func _physics_process(delta):
 	move_and_slide(move_vector * SPEED * delta)
 
 	if is_flashlight_on:
 		update_light_casts()
+
+func add_nearby_goo(goo):
+	if nearby_goo.has(goo): return
+	nearby_goo.append(goo)
+
+func remove_nearby_goo(goo):
+	nearby_goo.erase(goo)
+
+func on_done_cleaning(failed):
+	cleaning_bar.hide()
+	is_cleaning = false
+
+	if not failed:
+		nearby_goo.pop_front()
 
 func toggle_flashlight(is_on): # TODO not the best name
 	flashlight.visible = is_on
