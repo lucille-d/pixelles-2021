@@ -15,12 +15,12 @@ var dying = false
 var goo_timer = randi() % 4 + 2
 
 func _process(delta):
+	if dying: return
+
 	goo_timer -= delta
 	if goo_timer <= 0:
 		spawn_goo()
 		goo_timer = randi() % 4 + 2
-
-	if dying: return
 
 	if direction == 1:
 		sprite.region_rect.position.x = 32

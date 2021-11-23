@@ -7,6 +7,12 @@ onready var flashlight_collider = $Flashlight/CollisionPolygon2D
 onready var flashlight_light = $Flashlight/Light
 onready var cleaning_bar = $CleaningBar
 
+# effects
+onready var flashlight_on_sound = $FlashlightOnSound
+onready var flashlight_off_sound = $FlashlightOffSound
+onready var footsteps_sound = $FootstepsSound
+onready var footsteps_particles = $FootstepsParticles
+
 const SPEED = 7000
 
 # reference casting points (pointing right)
@@ -22,16 +28,21 @@ var is_flashlight_on = false
 var light_casts : Array = []
 var is_cleaning = false
 
+var is_walking = false
+var footsteps_sound_loop_delay = .5
+var footsteps_sound_loop_timer = .5
+
 var nearby_goo = []
 
 func _ready():
-	toggle_flashlight(is_flashlight_on)
+	toggle_flashlight(false, true)
+
 	light_casts = get_tree().get_nodes_in_group('light')
 
 	for i in light_casts.size():
 		light_casts[i].cast_to = RC_POINTS[i]
 
-func _process(_delta):
+func _process(delta):
 	# movement
 	move_vector = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
@@ -52,6 +63,14 @@ func _process(_delta):
 		move_vector += Vector2.RIGHT
 
 	move_vector = move_vector.normalized()
+	is_walking = move_vector != Vector2.ZERO
+	if is_walking:
+		footsteps_sound_loop_timer -= delta
+		if footsteps_sound_loop_timer <= 0:
+			footsteps_sound_loop_timer = footsteps_sound_loop_delay
+			footsteps_sound.pitch_scale = rand_range(1, 2)
+			footsteps_sound.play()
+			footsteps_particles.emitting = true
 
 	# flashlight
 	if Input.is_action_just_pressed("activate_light") and !is_cleaning:
@@ -62,7 +81,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("clean") and nearby_goo.size() > 0:
 		is_cleaning = true
 		is_flashlight_on = false
-		toggle_flashlight(false)
+		toggle_flashlight(false, true)
 		nearby_goo[0].on_clean()
 		anim_player.play("cleaning_bar")
 		# not ideal, this animation has to be the same duration as goo.disappear
@@ -102,7 +121,12 @@ func on_done_cleaning(failed):
 	if not failed:
 		nearby_goo.pop_front()
 
-func toggle_flashlight(is_on): # TODO not the best name
+func toggle_flashlight(is_on, silent = false): # TODO not the best name
+	if is_on and not silent:
+		flashlight_on_sound.play()
+	elif not silent:
+		flashlight_off_sound.play()
+
 	flashlight.visible = is_on
 	flashlight_collider.disabled = !is_on
 	for lc in light_casts:

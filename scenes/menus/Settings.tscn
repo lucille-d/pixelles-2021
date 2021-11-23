@@ -17,10 +17,10 @@ __meta__ = {
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -126.0
-margin_top = 16.0
-margin_right = 210.0
-margin_bottom = 236.0
+margin_left = -122.0
+margin_top = 20.0
+margin_right = 214.0
+margin_bottom = 240.0
 rect_scale = Vector2( 0.35, 0.35 )
 rect_clip_content = true
 size_flags_horizontal = 4
@@ -45,15 +45,15 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 58.0
+margin_top = 64.0
 margin_right = 88.0
-margin_bottom = 81.0
+margin_bottom = 87.0
 text = "Select accent color:"
 valign = 2
 autowrap = true
 
 [node name="SaveButton" type="Button" parent="VBoxContainer"]
-margin_top = 85.0
+margin_top = 91.0
 margin_right = 88.0
 margin_bottom = 101.0
 text = "SAVE"
@@ -61,7 +61,7 @@ text = "SAVE"
 [node name="ResetButton" type="Button" parent="VBoxContainer"]
 margin_top = 105.0
 margin_right = 88.0
-margin_bottom = 121.0
+margin_bottom = 115.0
 text = "RESET"
 
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]

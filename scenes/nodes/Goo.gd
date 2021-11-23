@@ -2,6 +2,7 @@ extends Area2D
 
 onready var sprite = $Sprite
 onready var outline = $Outline
+onready var sound = $AudioStreamPlayer2D
 onready var animation_player = $AnimationPlayer
 onready var game = get_parent().get_parent()
 
@@ -10,6 +11,7 @@ var is_cleanable = true
 
 func _ready():
 	modulate_color()
+	sound.play()
 	if game and game.has_method("update_chaos"):
 		game.update_chaos(chaos_value)
 
