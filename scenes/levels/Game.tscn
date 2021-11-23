@@ -70,7 +70,7 @@ __meta__ = {
 [node name="Controls" type="Panel" parent="GUI"]
 self_modulate = Color( 0, 0, 0, 1 )
 material = SubResource( 4 )
-margin_right = 73.0
+margin_right = 85.0
 margin_bottom = 24.0
 theme = ExtResource( 7 )
 __meta__ = {
@@ -80,7 +80,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="GUI/Controls"]
 margin_left = 0.595276
 margin_top = 0.992126
-margin_right = 70.5953
+margin_right = 85.5953
 margin_bottom = 26.9921
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
