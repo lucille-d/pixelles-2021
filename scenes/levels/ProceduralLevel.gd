@@ -25,7 +25,7 @@ func _ready():
 	for x in level_width:
 		for y in level_height:
 			if x == y and x == 2: continue # player spawn position
-			if noise.get_noise_2d(float(x),float(y)) > 0.25:
+			if noise.get_noise_2d(float(x),float(y)) > 0.3:
 				if randf() <= .9:
 					set_cell(x, y, tomb_tile)
 				else:

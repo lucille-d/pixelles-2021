@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal ghost_dead
+
 onready var Goo = preload("Goo.tscn")
 
 onready var sprite = $Sprite
@@ -9,6 +11,7 @@ onready var goo_container = get_parent().find_node("GooContainer")
 const SPEED = 50
 export(int, "Vertical", "Horizontal") var direction
 
+var game = null
 var is_killable = true
 var facing = 1
 var dying = false
@@ -20,7 +23,7 @@ func _process(delta):
 	goo_timer -= delta
 	if goo_timer <= 0:
 		spawn_goo()
-		goo_timer = randi() % 4 + 2
+		goo_timer = get_goo_timer()
 
 	if direction == 1:
 		sprite.region_rect.position.x = 32
@@ -42,8 +45,9 @@ func _process(delta):
 			facing = 1
 
 func hit_by_light():
-	if not is_killable: return # used for tutorial
+	if not is_killable or dying: return # used for tutorial
 	dying = true
+	emit_signal("ghost_dead")
 	anim_player.play("die")
 
 func spawn_goo():
@@ -51,3 +55,6 @@ func spawn_goo():
 	g.position = position
 	goo_container.add_child(g)
 	return g
+
+func get_goo_timer():
+	return randi() % 4 + 4 - game.current_difficulty

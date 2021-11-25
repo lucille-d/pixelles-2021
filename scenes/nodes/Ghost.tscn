@@ -50,18 +50,6 @@ tracks/1/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 0, 0, 1 ) ]
-}
 
 [node name="Ghost" type="RigidBody2D"]
 collision_layer = 2
@@ -71,6 +59,7 @@ gravity_scale = 0.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.72, 0.72 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 32, 16, 16 )

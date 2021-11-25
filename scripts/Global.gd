@@ -9,6 +9,7 @@ onready var MenuScene = preload("res://scenes/menus/Menu.tscn")
 onready var SettingsScene = preload("res://scenes/menus/Settings.tscn")
 
 var has_won = true
+var finish_time = -1
 
 const DEFAULT_ACCENT_COLOR = Color("#00ff1b")
 var accent_color = DEFAULT_ACCENT_COLOR
@@ -18,7 +19,7 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+		quit()
 
 	if Input.is_action_just_pressed("restart"):
 		restart()
@@ -34,8 +35,9 @@ func start_game():
 func to_tutorial():
 	get_tree().change_scene_to(TutorialScene)
 
-func end_game(win):
+func end_game(win, time):
 	has_won = win
+	finish_time = time
 	get_tree().change_scene_to(GameOverScene)
 
 func to_menu():
@@ -47,3 +49,5 @@ func to_settings():
 func restart():
 	get_tree().reload_current_scene()
 
+func quit():
+	get_tree().quit()

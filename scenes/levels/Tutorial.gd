@@ -69,7 +69,7 @@ func kill_ghost_done():
 func process_step_4():
 	if Input.is_action_just_pressed("ui_accept"):
 		ui_time_bar.show()
-		label.text = "If you make it to the end of the time, you win!"
+		label.text = "If you make it to the end of the timer, you win!"
 		current_step += 1
 
 func process_step_5():
