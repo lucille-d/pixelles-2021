@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var Ghost = preload("../nodes/Ghost.tscn")
+onready var ui_timer = $GUI/Timer
 onready var ui_timebar = $GUI/TimeBar
 onready var ui_chaosbar = $GUI/ChaosBar
 onready var goo_container = $GooContainer
@@ -13,21 +14,25 @@ var ghost_counter = 0
 const LEVEL_TIME = 60 # seconds
 var current_time = 0
 var current_difficulty = 1
-const MAX_DIFFICULTY = 4
-const DIFFICULTY_TIER  = LEVEL_TIME / MAX_DIFFICULTY
+const MAX_DIFFICULTY = 8
+const DIFFICULTY_TIER  = 15 #LEVEL_TIME / MAX_DIFFICULTY
 
 const MAX_CHAOS = 100
 var current_chaos = 0
 
 func _ready():
 	Global.connect("pause", self, "on_pause")
+	if Global.game_mode == 1:
+		ui_timebar.show()
+		ui_timer.hide()
 
 func _process(delta):
 	current_time += delta
 	update_difficulty()
 	ui_timebar.value = min(100, current_time * 100 / LEVEL_TIME)
+	ui_timer.text = str(floor(current_time))
 
-	if current_time >= LEVEL_TIME:
+	if Global.game_mode == 1 and current_time >= LEVEL_TIME:
 		Global.end_game(true, current_time)
 
 	ghost_spawn_timer -= delta

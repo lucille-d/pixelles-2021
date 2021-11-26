@@ -39,13 +39,29 @@ environment = SubResource( 1 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="TimeBar" parent="GUI" instance=ExtResource( 5 )]
+[node name="Timer" type="Label" parent="GUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = -15.0
+margin_right = 42.0
+margin_bottom = -2.0
+theme = ExtResource( 7 )
+text = "00"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ChaosBar" parent="GUI" instance=ExtResource( 5 )]
-margin_left = 13.0
 margin_right = 53.0
 sprite_rect_x = 83
 colored = true
+
+[node name="TimeBar" parent="GUI" instance=ExtResource( 5 )]
+visible = false
+margin_left = 13.0
+margin_right = 53.0
 
 [node name="Controls" type="Panel" parent="GUI"]
 self_modulate = Color( 0, 0, 0, 1 )

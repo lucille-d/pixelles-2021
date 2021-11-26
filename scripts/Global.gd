@@ -8,8 +8,12 @@ onready var GameOverScene = preload("res://scenes/menus/GameOver.tscn")
 onready var MenuScene = preload("res://scenes/menus/Menu.tscn")
 onready var SettingsScene = preload("res://scenes/menus/Settings.tscn")
 
+var game_mode = 2 # 1 = 60 secondes, 2 = infinite
+
 var has_won = true
 var finish_time = -1
+var best_time = -1
+var new_record = true
 
 const DEFAULT_ACCENT_COLOR = Color("#00ff1b")
 var accent_color = DEFAULT_ACCENT_COLOR
@@ -37,7 +41,12 @@ func to_tutorial():
 
 func end_game(win, time):
 	has_won = win
-	finish_time = time
+	finish_time = floor(time)
+	if Global.game_mode == 2 and finish_time > best_time:
+		best_time = finish_time
+		new_record = true
+	else:
+		new_record = false
 	get_tree().change_scene_to(GameOverScene)
 
 func to_menu():

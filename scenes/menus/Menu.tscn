@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/resources/theme.tres" type="Theme" id=2]
 [ext_resource path="res://scenes/menus/HoverButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/menus/Menu.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -12,6 +13,7 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,43 +30,78 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 36.0
+margin_top = 31.0
 margin_right = 152.0
-margin_bottom = 87.0
+margin_bottom = 64.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "Untitled Ghost Game
-
 "
 align = 1
 
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 152.0
+margin_bottom = 78.0
+text = "Game mode:"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 82.0
+margin_right = 152.0
+margin_bottom = 92.0
+alignment = 1
+
+[node name="LeftArrow" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 42.0
+margin_right = 47.0
+margin_bottom = 10.0
+text = "<"
+
+[node name="GameModeLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 51.0
+margin_right = 101.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 50, 0 )
+text = "Infinite"
+align = 1
+
+[node name="RightArrow" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 105.0
+margin_right = 110.0
+margin_bottom = 10.0
+text = ">"
+
 [node name="StartButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_top = 91.0
+margin_top = 96.0
 margin_right = 152.0
-margin_bottom = 101.0
+margin_bottom = 106.0
 text = "Start"
 global_method = "start_game"
 
 [node name="TutorialButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_top = 105.0
+margin_top = 110.0
 margin_right = 152.0
-margin_bottom = 115.0
+margin_bottom = 120.0
 text = "Tutorial"
 global_method = "to_tutorial"
 
 [node name="SettingsButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_top = 119.0
+margin_top = 124.0
 margin_right = 152.0
-margin_bottom = 129.0
+margin_bottom = 134.0
 text = "Settings"
 
 [node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_top = 133.0
+margin_top = 138.0
 margin_right = 152.0
-margin_bottom = 143.0
+margin_bottom = 148.0
 text = "Quit"
 global_method = "quit"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftArrow" to="." method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightArrow" to="." method="_on_RightArrow_pressed"]
