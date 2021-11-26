@@ -28,7 +28,6 @@ func modulate_color():
 	sprite.modulate = Global.accent_color
 
 func _on_Goo_body_entered(body):
-#	animation_player.play("blink")
 	outline.show()
 	body.add_nearby_goo(self)
 

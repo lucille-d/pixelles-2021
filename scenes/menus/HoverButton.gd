@@ -15,6 +15,7 @@ func _on_HoverButton_mouse_exited():
 
 
 func _on_HoverButton_pressed():
+	print("click")
 	click_sound.play()
 
 func _on_ClickSound_finished():

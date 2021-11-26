@@ -58,11 +58,9 @@ func spawn_ghost():
 		g.direction = 1
 	add_child(g)
 	ghost_counter += 1
-	print("NEW! ghosts : ", str(ghost_counter))
 
 func on_ghost_death():
 	ghost_counter -= 1
-	print("DEAD! ghosts : ", str(ghost_counter))
 
 func on_pause(is_paused):
 	if is_paused:

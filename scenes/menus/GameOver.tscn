@@ -26,14 +26,15 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 64.0
+margin_top = 71.0
 margin_right = 100.0
-margin_bottom = 74.0
+margin_bottom = 81.0
 text = "game over"
 align = 1
 autowrap = true
 
 [node name="TimeLabel" type="Label" parent="VBoxContainer"]
+visible = false
 margin_top = 78.0
 margin_right = 100.0
 margin_bottom = 88.0
@@ -42,16 +43,16 @@ align = 1
 
 [node name="RestartButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_top = 92.0
+margin_top = 85.0
 margin_right = 100.0
-margin_bottom = 102.0
+margin_bottom = 95.0
 text = "Restart"
 global_method = "start_game"
 
 [node name="MenuButton" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_top = 106.0
+margin_top = 99.0
 margin_right = 100.0
-margin_bottom = 116.0
+margin_bottom = 109.0
 text = "Menu"
 global_method = "to_menu"

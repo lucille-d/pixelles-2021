@@ -57,4 +57,4 @@ func spawn_goo():
 	return g
 
 func get_goo_timer():
-	return randi() % 4 + 4 - game.current_difficulty
+	return randi() % 5 + 4 - game.current_difficulty * .5
