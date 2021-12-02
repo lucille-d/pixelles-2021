@@ -22,6 +22,7 @@ var current_chaos = 0
 
 func _ready():
 	Global.connect("pause", self, "on_pause")
+	Global.set_pause(false)
 	if Global.game_mode == 1:
 		ui_timebar.show()
 		ui_timer.hide()

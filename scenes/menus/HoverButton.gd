@@ -6,6 +6,9 @@ onready var click_sound = $ClickSound
 
 export var global_method = "to_settings"
 
+func _ready():
+	pause_mode = PAUSE_MODE_PROCESS
+
 func _on_HoverButton_mouse_entered():
 	hover_sound.play()
 	sprite.show()

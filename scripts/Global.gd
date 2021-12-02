@@ -30,11 +30,14 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("pause"):
 		var is_paused = get_tree().paused
-		get_tree().paused = !is_paused
-		emit_signal("pause", !is_paused)
+		set_pause(!is_paused)
 
 func start_game():
 	get_tree().change_scene_to(GameScene)
+
+func set_pause(value):
+	get_tree().paused = value
+	emit_signal("pause", value)
 
 func to_tutorial():
 	get_tree().change_scene_to(TutorialScene)
