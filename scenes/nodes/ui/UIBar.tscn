@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/nodes/ui/UIBar.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/spritesheet.png" type="Texture" id=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 50.0
+damping_random = 1.0
+angle = 360.0
 
 [node name="UIBar" type="Control"]
 margin_right = 40.0
@@ -16,6 +29,15 @@ position = Vector2( 6, 45 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 67, 3, 11, 11 )
+
+[node name="Particles2D" type="Particles2D" parent="Sprite"]
+z_index = -1
+emitting = false
+amount = 32
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 1 )
 
 [node name="Bar" type="NinePatchRect" parent="."]
 margin_top = 50.0
@@ -46,3 +68,5 @@ region_rect = Rect2( 114, 2, 5, 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

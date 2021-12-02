@@ -30,7 +30,7 @@ func _ready():
 func _process(delta):
 	current_time += delta
 	update_difficulty()
-	ui_timebar.value = min(100, current_time * 100 / LEVEL_TIME)
+	ui_timebar.set_value(min(100, current_time * 100 / LEVEL_TIME))
 	ui_timer.text = str(floor(current_time))
 
 	if Global.game_mode == 1 and current_time >= LEVEL_TIME:
@@ -49,7 +49,7 @@ func update_difficulty():
 func update_chaos(value):
 	current_chaos = max(0, current_chaos + value)
 
-	ui_chaosbar.value = min(100, current_chaos * 100 / MAX_CHAOS)
+	ui_chaosbar.set_value(min(100, current_chaos * 100 / MAX_CHAOS))
 
 	if current_chaos > MAX_CHAOS:
 		Global.end_game(false, current_time)

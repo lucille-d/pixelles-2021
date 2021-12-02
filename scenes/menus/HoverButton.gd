@@ -1,10 +1,10 @@
 extends Button
 
+export var global_method = "to_settings"
+
 onready var sprite = $Sprite
 onready var hover_sound = $HoverSound
 onready var click_sound = $ClickSound
-
-export var global_method = "to_settings"
 
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS

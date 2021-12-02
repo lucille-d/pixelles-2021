@@ -2,6 +2,8 @@ extends RigidBody2D
 
 signal ghost_dead
 
+export(int, "Vertical", "Horizontal") var direction
+
 onready var Goo = preload("Goo.tscn")
 
 onready var sprite = $Sprite
@@ -10,7 +12,6 @@ onready var anim_player = $AnimationPlayer
 onready var goo_container = get_parent().find_node("GooContainer")
 
 const SPEED = 50
-export(int, "Vertical", "Horizontal") var direction
 
 var game = null
 var is_killable = true
