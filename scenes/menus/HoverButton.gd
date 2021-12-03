@@ -16,7 +16,6 @@ func _on_HoverButton_mouse_entered():
 func _on_HoverButton_mouse_exited():
 	sprite.hide()
 
-
 func _on_HoverButton_pressed():
 	click_sound.play()
 

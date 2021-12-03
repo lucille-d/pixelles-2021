@@ -34,6 +34,8 @@ var footsteps_sound_loop_timer = .5
 
 var nearby_goo = []
 
+var control_type = 2 # 1 = keyboard, 2 = mouse
+
 func _ready():
 	toggle_flashlight(false, true)
 
@@ -86,19 +88,26 @@ func _process(delta):
 		anim_player.play("cleaning_bar")
 		# not ideal, this animation has to be the same duration as goo.disappear
 
-	var lc_rotation = null
-	if Input.is_action_just_pressed("shoot_up"):
-		lc_rotation = -90
-	if Input.is_action_just_pressed("shoot_down"):
-		lc_rotation = 90
-	if Input.is_action_just_pressed("shoot_left"):
-		lc_rotation = 180
-	if Input.is_action_just_pressed("shoot_right"):
-		lc_rotation = 0
+	if control_type == 1:
+		var lc_rotation = null
+		if Input.is_action_just_pressed("shoot_up"):
+			lc_rotation = -90
+		if Input.is_action_just_pressed("shoot_down"):
+			lc_rotation = 90
+		if Input.is_action_just_pressed("shoot_left"):
+			lc_rotation = 180
+		if Input.is_action_just_pressed("shoot_right"):
+			lc_rotation = 0
 
-	if lc_rotation != null:
+		if lc_rotation != null:
+			for i in light_casts.size():
+				light_casts[i].cast_to = RC_POINTS[i].rotated(deg2rad(lc_rotation))
+	else:
+		var mouse_pos = get_global_mouse_position()
+		var rotation_deg = get_angle_to(mouse_pos)
+		print(rotation_deg)
 		for i in light_casts.size():
-			light_casts[i].cast_to = RC_POINTS[i].rotated(deg2rad(lc_rotation))
+				light_casts[i].cast_to = RC_POINTS[i].rotated(rotation_deg)
 
 
 func _physics_process(delta):
