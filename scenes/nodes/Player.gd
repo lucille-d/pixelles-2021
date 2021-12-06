@@ -34,7 +34,7 @@ var footsteps_sound_loop_timer = .5
 
 var nearby_goo = []
 
-var control_type = 2 # 1 = keyboard, 2 = mouse
+var control_type = 1 # 1 = keyboard, 2 = mouse
 
 func _ready():
 	toggle_flashlight(false, true)

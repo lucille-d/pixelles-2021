@@ -23,10 +23,10 @@ func _ready():
 func _process(_delta):
 	bar_fill.rect_size.y = value * MAX_SIZE / 100
 
-	if Input.is_action_just_pressed("shoot_up"):
-		set_value(value + 10)
-	if Input.is_action_just_pressed("shoot_down"):
-		set_value(value - 10)
+#	if Input.is_action_just_pressed("shoot_up"):
+#		set_value(value + 10)
+#	if Input.is_action_just_pressed("shoot_down"):
+#		set_value(value - 10)
 
 func set_value(new_value):
 	var old_value = value
