@@ -1,6 +1,7 @@
 extends Control
 
 onready var game_mode_label = $VBoxContainer/HBoxContainer/GameModeLabel
+onready var game_mode_sub_label = $VBoxContainer/GameModeSublabel
 
 func _ready():
 	update_game_mode_label()
@@ -20,3 +21,4 @@ func toggle_game_mode():
 
 func update_game_mode_label():
 	game_mode_label.text = "Timed" if Global.game_mode == 1 else "Infinite"
+	game_mode_sub_label.text = "Clean as much slime as you can in 60 seconds!" if Global.game_mode == 1 else "Hold on as long as you can without drowning in slime!"

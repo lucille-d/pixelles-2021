@@ -62,22 +62,27 @@ func clean_slime_done():
 
 func kill_ghost_done():
 	ui_slime_bar.show()
-	label.text = "If the slime counter fills up, you lose..."
+	label.text = "If the slime counter fills up, it's over..."
 	enter_label.show()
 	current_step = 4
 
 func process_step_4():
 	if Input.is_action_just_pressed("ui_accept"):
-		ui_time_bar.show()
-		label.text = "If you make it to the end of the timer, you win!"
+		label.text = "In infinite mode, you try to hold on as long as possible before being overrun by slime."
 		current_step += 1
 
 func process_step_5():
 	if Input.is_action_just_pressed("ui_accept"):
-		label.text = "Good luck!"
+		ui_time_bar.show()
+		label.text = "In timed mode, you try to clean as much slime as you can before the end of the timer."
 		current_step += 1
 
 func process_step_6():
+	if Input.is_action_just_pressed("ui_accept"):
+		label.text = "Good luck!"
+		current_step += 1
+
+func process_step_7():
 	if Input.is_action_just_pressed("ui_accept"):
 		Global.to_menu()
 

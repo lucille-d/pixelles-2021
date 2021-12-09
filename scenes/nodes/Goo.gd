@@ -22,6 +22,7 @@ func on_clean():
 func on_cleaned():
 	if game and game.has_method("update_chaos"):
 		game.update_chaos(-chaos_value)
+		game.on_slime_cleaned()
 	queue_free()
 
 func modulate_color():

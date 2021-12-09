@@ -30,7 +30,7 @@ text = "game over"
 align = 1
 autowrap = true
 
-[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+[node name="ResultLabel" type="Label" parent="VBoxContainer"]
 visible = false
 margin_top = 71.0
 margin_right = 100.0
