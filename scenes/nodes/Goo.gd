@@ -15,6 +15,10 @@ func _ready():
 	if game and game.has_method("update_chaos"):
 		game.update_chaos(chaos_value)
 
+	var random_rotation = randi() % 4
+	rotation_degrees = 90 * random_rotation
+	print(str(random_rotation) + " " + str(rotation_degrees))
+
 func on_clean():
 	if not is_cleanable: return # used for tutorial
 	animation_player.play("disappear")

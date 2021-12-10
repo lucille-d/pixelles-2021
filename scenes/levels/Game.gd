@@ -23,6 +23,7 @@ var current_chaos = 0
 var current_slime_count = 0
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Global.connect("pause", self, "on_pause")
 	Global.set_pause(false)
 	ui_slime_counter.get_child(0).modulate = Global.accent_color
@@ -34,6 +35,9 @@ func _ready():
 		ui_timebar.hide()
 		ui_timer.show()
 		ui_slime_counter.hide()
+
+func _exit_tree():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _process(delta):
 	current_time += delta
@@ -82,6 +86,8 @@ func on_slime_cleaned():
 
 func on_pause(is_paused):
 	if is_paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_overlay.show()
 	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		pause_overlay.hide()

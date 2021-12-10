@@ -12,8 +12,12 @@ var g = null
 var s = null
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ui_slime_bar.value = 50
 	ui_time_bar.value = 50
+
+func _exit_tree():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _process(delta):
 	if current_step:

@@ -8,7 +8,7 @@ onready var GameOverScene = preload("res://scenes/menus/GameOver.tscn")
 onready var MenuScene = preload("res://scenes/menus/Menu.tscn")
 onready var SettingsScene = preload("res://scenes/menus/Settings.tscn")
 
-var game_mode = 2 # 1 = 60 secondes, 2 = infinite
+var game_mode = 1 # 1 = 60 secondes, 2 = infinite
 
 var has_won = true
 var new_record = true

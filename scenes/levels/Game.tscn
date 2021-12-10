@@ -135,16 +135,17 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -37.0
-margin_right = 37.0
+margin_left = -90.0
+margin_right = 90.0
 margin_bottom = -26.0
+rect_min_size = Vector2( 180, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="GUI/PauseOverlay/VBoxContainer"]
-margin_right = 74.0
-margin_bottom = 154.0
+margin_right = 180.0
+margin_bottom = 144.0
 size_flags_vertical = 3
 theme = ExtResource( 7 )
 custom_fonts/font = SubResource( 2 )
@@ -157,16 +158,16 @@ __meta__ = {
 
 [node name="RestartButton" parent="GUI/PauseOverlay/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_top = 130.0
-margin_right = 74.0
-margin_bottom = 140.0
+margin_top = 148.0
+margin_right = 180.0
+margin_bottom = 149.0
 text = "Restart level"
 global_method = "restart"
 
 [node name="QuitButton" parent="GUI/PauseOverlay/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_top = 144.0
-margin_right = 74.0
+margin_top = 153.0
+margin_right = 180.0
 margin_bottom = 154.0
 text = "Menu"
 global_method = "to_menu"

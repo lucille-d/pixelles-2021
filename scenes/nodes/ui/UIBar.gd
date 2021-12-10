@@ -8,10 +8,12 @@ onready var sprite = $Sprite
 onready var bar = $Bar
 onready var bar_fill = $BarFill
 onready var particles = $Sprite/Particles2D
+onready var anim_player = $AnimationPlayer
 
 const MAX_SIZE = 74
 
 var value = 0
+var shaking = true
 
 func _ready():
 	sprite.region_rect.position.x = sprite_rect_x
@@ -34,3 +36,5 @@ func set_value(new_value):
 
 	if animation_type == 1 and old_value < value:
 		particles.emitting = true
+	elif animation_type == 2 and value > 90:
+		anim_player.play("shake")
